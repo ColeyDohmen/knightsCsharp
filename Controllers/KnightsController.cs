@@ -30,5 +30,47 @@ namespace knights.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult<Knight> Create([FromBody] Knight newKnight)
+        {
+            try
+            {
+                return Ok(_service.Create(newKnight));
+            }
+            catch (System.Exception err)
+            {
+
+                return BadRequest(err.Message);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Knight> GetKnight(int id)
+        {
+            try
+            {
+                return Ok(_service.Get(id));
+            }
+            catch (System.Exception err)
+            {
+
+                return BadRequest(err.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Knight> DeleteKnight(int id)
+        {
+            try
+            {
+                return Ok(_service.Delete(id));
+            }
+            catch (System.Exception err)
+            {
+
+                return BadRequest(err.Message);
+            }
+        }
+
     }
 }
