@@ -9,8 +9,7 @@ namespace knights.Controllers
     [Route("api/[controller]")]
     public class CastlesController : ControllerBase
     {
-        public CastlesController : ControllerBase
-        {
+
 
         private readonly CastlesService _service;
 
@@ -46,5 +45,4 @@ namespace knights.Controllers
             }
         }
     }
-}
 }
