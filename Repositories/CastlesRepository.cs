@@ -21,7 +21,28 @@ namespace knights.Repositories
         }
         internal Castle Create(Castle newCastle)
         {
-            throw new NotImplementedException();
+            string sql = @"
+            INSERT INTO Castles
+            (name, description)
+            VALUES
+            (@Name, @Description);
+            SELECT LAST_INSERT_ID();";
+            int id = _db.ExecuteScalar<int>(sql, newCastle);
+            newCastle.Id = id;
+            return newCastle;
+        }
+
+        internal Castle Get(int id)
+        {
+            string sql = "SELECT * FROM castles WHERE id = @id;";
+            return _db.QueryFirstOrDefault<Castle>(sql, new { id });
+        }
+
+        internal void Delete(int id)
+        {
+            string sql = "DELETE FROM castles WHERE id = @id;";
+            _db.Execute(sql, new { id });
+            return;
         }
     }
 }

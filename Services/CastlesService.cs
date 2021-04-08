@@ -1,7 +1,5 @@
 using System;
 using knights.Models;
-
-using System;
 using knights.Repositories;
 using System.Collections.Generic;
 
@@ -24,6 +22,28 @@ namespace knights.Services
         internal Castle Create(Castle newCastle)
         {
             return _repo.Create(newCastle);
+        }
+
+        internal Castle Get(int id)
+        {
+            Castle castle = _repo.Get(id);
+            if (castle == null)
+            {
+                throw new Exception("invalid id");
+            }
+            return castle;
+        }
+
+        internal Castle Delete(int id)
+        {
+            Castle original = Get(id);
+            _repo.Delete(id);
+            return original;
+        }
+
+        internal object Edit(Castle editCastle)
+        {
+            throw new NotImplementedException();
         }
     }
 

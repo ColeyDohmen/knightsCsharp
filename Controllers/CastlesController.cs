@@ -44,5 +44,48 @@ namespace knights.Controllers
                 return BadRequest(err.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<Castle> GetCastle(int id)
+        {
+            try
+            {
+                return Ok(_service.Get(id));
+            }
+            catch (System.Exception err)
+            {
+
+                return BadRequest(err.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<Castle> DeleteCastle(int id)
+        {
+            try
+            {
+                return Ok(_service.Delete(id));
+            }
+            catch (System.Exception err)
+            {
+
+                return BadRequest(err.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<Castle> Edit([FromBody] Castle editCastle, int id)
+        {
+            try
+            {
+                editCastle.Id = id;
+                return Ok(_service.Edit(editCastle));
+            }
+            catch (System.Exception err)
+            {
+
+                return BadRequest(err.Message);
+            }
+        }
     }
 }
