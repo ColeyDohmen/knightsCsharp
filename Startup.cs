@@ -38,6 +38,8 @@ namespace knights
             });
             services.AddTransient<CastlesService>();
             services.AddTransient<CastlesRepository>();
+            services.AddTransient<KnightsService>();
+            services.AddTransient<KnightsRepository>();
 
             services.AddScoped<IDbConnection>(x => CreateDbConnection());
         }

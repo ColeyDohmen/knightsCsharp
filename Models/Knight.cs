@@ -2,6 +2,7 @@ namespace knights.Models
 {
     public class Knight
     {
+        internal int Id;
          public Knight()
         {
         }
